@@ -26,8 +26,6 @@ SECRET_KEY = 'django-insecure-xx(3cg!)f$)(l9mje=(!a-011wj7ucjf8j)t$-pa1%*=ztzl8-
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'genres',
-    
+
 ]
 
 MIDDLEWARE = [
