@@ -36,7 +36,7 @@ class GenreApiTests(TestCase):
             data = {'name': 'UpdatedGenre'}
             response = self.client.put(
                 f'/genres/{genre.id}/', data=json.dumps(data), content_type='application/json')
-            self.assertEqual(response.status_code, 201)
+            self.assertEqual(response.status_code, 200)
 
             # Test DELETE request
             response = self.client.delete(f'/genres/{genre.id}/')
@@ -44,7 +44,7 @@ class GenreApiTests(TestCase):
 
             # Test non-existing genre
             response = self.client.get('/genres/999/')
-            self.assertEqual(response.status_code, 500)
+            self.assertEqual(response.status_code, 404)
         except Exception as e:
             print("Exception:", e)
             raise  # Reraise the exception to see the traceback
