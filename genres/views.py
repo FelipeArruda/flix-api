@@ -6,14 +6,17 @@ from django.core.exceptions import ValidationError, MultipleObjectsReturned
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from genres.serializers import GenreSerializer
+from rest_framework.permissions import IsAuthenticated
 
 
 class GenreRetriveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAuthenticated,)
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 
 
 class GenreCreatListView(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 

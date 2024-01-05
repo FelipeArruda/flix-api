@@ -15,4 +15,7 @@ urlpatterns = [
 
     # Reviews
     path('api/v1/', include('reviews.urls')),
+
+    # Authentication
+    path('api/v1/', include('authentication.urls')),
 ]
