@@ -1,24 +1,22 @@
-import json
-from django.http import JsonResponse
 from genres.models import Genre
-from django.views.decorators.csrf import csrf_exempt
-from django.core.exceptions import ValidationError, MultipleObjectsReturned
-from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from genres.serializers import GenreSerializer
 from rest_framework.permissions import IsAuthenticated
+from genres.permissions import GenrePermissionClass
+from app.permissions import GlobalDefaultPermission
 
 
 class GenreRetriveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, GlobalDefaultPermission, )
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 
 
 class GenreCreatListView(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, GlobalDefaultPermission, )
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
+
 
 # @csrf_exempt
 # def genre_create_list_view(request):
